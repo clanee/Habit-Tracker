@@ -11,7 +11,7 @@ export const Header = () => {
           <p className={Styles["name__li"]}>Мои привычки</p>
         </div>
         <div className={Styles["li"]}>
-          <p className={Styles["name__li"]}>Статистика</p>
+          <p className={Styles["name__li"]}>Профиль</p>
         </div>
       </div>
     </header>

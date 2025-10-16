@@ -1,23 +1,24 @@
 .header {
-  /* background: #d9c9b2; */
+  background: #a19c8d;
   margin: 0;
   height: 90px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-family: "Jost";
   color: #3a3530;
+  margin: 25px;
+  border-radius: 30px;
 }
 
 .name__header {
   margin: 0;
-  font-size: 30px;
-  font-weight: 450;
+  font-size: 40px;
+  font-weight: 500;
 }
 
 .name__li {
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .name__li:hover {
@@ -27,7 +28,7 @@
 .ul {
   width: 350px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .li {

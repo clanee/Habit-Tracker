@@ -1,0 +1,36 @@
+.main {
+  margin: 50px;
+  font-size: 30px;
+}
+
+.main__greeting {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main__p__greeting {
+  text-align: right;
+  font-size: 25px;
+  color: #914626;
+}
+
+.main__habits__today {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__columns__name {
+  display: flex;
+  flex-direction: row;
+  width: 1300px;
+}
+
+.main__habits__list {
+  width: 850px;
+  margin-left: 20px;
+}
+
+.main__habits__status {
+  width: 250px;
+}
