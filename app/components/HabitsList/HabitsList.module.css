@@ -21,25 +21,28 @@
 }
 
 .habit__description {
-  width: 860px;
+  width: 845px;
 }
 
 .habit__p__description {
-  max-width: 600px;
+  max-width: 750px;
   margin-left: 40px;
 }
 
 .habit__status {
+  width: 160px;
   margin-right: 20px;
 }
 
 .habit__action {
-  transform: scale(3);
-  margin-right: 160px;
-  background: none;
+  width: 160px;
 }
 
-.habit__delete {
+.habit__input__action {
+  transform: scale(3);
+}
+
+.habit__input__delete {
   border: none;
   background: none;
   font-size: 30px;
