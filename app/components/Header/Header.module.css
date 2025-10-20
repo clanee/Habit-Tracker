@@ -19,6 +19,7 @@
 .name__li {
   margin: 0;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .name__li:hover {

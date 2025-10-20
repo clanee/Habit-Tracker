@@ -40,10 +40,12 @@
 
 .habit__input__action {
   transform: scale(3);
+  cursor: pointer;
 }
 
 .habit__input__delete {
   border: none;
   background: none;
   font-size: 30px;
+  cursor: pointer;
 }

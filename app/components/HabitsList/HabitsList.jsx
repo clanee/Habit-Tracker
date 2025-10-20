@@ -1,90 +1,84 @@
 "use client";
 
 import Styles from "./HabitsList.module.css";
+import { AddHabitButton } from "../AddHabitButton/AddHabitButton";
 import { useState } from "react";
 
 export const HabitsList = () => {
-  const [isChecked, setIsChecked] = useState({
-    box1: false,
-    box2: false,
-  });
+  const [habits, setHabits] = useState([
+    { id: 1, description: "Task description", completed: false },
+    { id: 2, description: "Task description", completed: false },
+  ]);
 
-  const checkChange = (name) => (e) => {
-    setIsChecked({
-      ...isChecked,
-      [name]: e.target.checked,
+  const checkChange = (id) => (e) => {
+    setHabits((prev) => {
+      return prev.map((habit) => {
+        return habit.id === id
+          ? { ...habit, completed: e.target.checked }
+          : habit;
+      });
     });
+  };
+
+  const addNewHabit = () => {
+    const newId =
+      habits.length > 0
+        ? Math.max(...habits.map((current) => current.id)) + 1
+        : 1;
+    setHabits((prev) => [
+      ...prev,
+      { id: newId, description: "Task description", completed: false },
+    ]);
+  };
+
+  const handleDelete = (id) => () => {
+    setHabits((prev) => prev.filter((habit) => habit.id !== id));
   };
   return (
     <div className={Styles["habits__list"]}>
-      <div className={Styles["habit"]}>
-        <div className={Styles["habit__description"]}>
-          <p className={Styles["habit__p__description"]}>Task description</p>
-        </div>
-        <div className={Styles["habit__status"]}>
-          {isChecked.box1 ? (
-            <p
-              className={Styles["habit__p__status"]}
-              style={{ color: "green" }}
-            >
-              Сделано
+      {habits.map((habit) => (
+        <div key={habit.id} className={Styles["habit"]}>
+          <div className={Styles["habit__description"]}>
+            <p className={Styles["habit__p__description"]}>
+              {habit.description}
             </p>
-          ) : (
-            <p className={Styles["habit__p__status"]} style={{ color: "red" }}>
-              В процессе
-            </p>
-          )}
+          </div>
+          <div className={Styles["habit__status"]}>
+            {habit.completed ? (
+              <p
+                className={Styles["habit__p__status"]}
+                style={{ color: "green" }}
+              >
+                Сделано
+              </p>
+            ) : (
+              <p
+                className={Styles["habit__p__status"]}
+                style={{ color: "red" }}
+              >
+                В процессе
+              </p>
+            )}
+          </div>
+          <div className={Styles["habit__action"]}>
+            <input
+              type="checkbox"
+              className={Styles["habit__input__action"]}
+              checked={habit.completed}
+              onChange={checkChange(habit.id)}
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="×"
+              className={Styles["habit__input__delete"]}
+              onClick={handleDelete(habit.id)}
+            />
+          </div>
         </div>
-        <div className={Styles["habit__action"]}>
-          <input
-            type="checkbox"
-            className={Styles["habit__input__action"]}
-            checked={isChecked.box1}
-            onChange={checkChange("box1")}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="button"
-            value="×"
-            className={Styles["habit__input__delete"]}
-          ></input>
-        </div>
-      </div>
-      <div className={Styles["habit"]}>
-        <div className={Styles["habit__description"]}>
-          <p className={Styles["habit__p__description"]}>Task description</p>
-        </div>
-        <div className={Styles["habit__status"]}>
-          {isChecked.box2 ? (
-            <p
-              className={Styles["habit__p__status"]}
-              style={{ color: "green" }}
-            >
-              Сделано
-            </p>
-          ) : (
-            <p className={Styles["habit__p__status"]} style={{ color: "red" }}>
-              В процессе
-            </p>
-          )}
-        </div>
-        <div className={Styles["habit__action"]}>
-          <input
-            type="checkbox"
-            className={Styles["habit__input__action"]}
-            checked={isChecked.box2}
-            onChange={checkChange("box2")}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="button"
-            value="×"
-            className={Styles["habit__input__delete"]}
-          ></input>
-        </div>
-      </div>
+      ))}
+      <AddHabitButton onClick={addNewHabit} />
     </div>
   );
 };
