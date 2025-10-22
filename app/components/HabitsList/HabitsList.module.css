@@ -49,3 +49,29 @@
   font-size: 30px;
   cursor: pointer;
 }
+
+.add__habit {
+  width: 1300px;
+  height: 70px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+.add__habit__button {
+  height: 60px;
+  background: none;
+  border: 2px solid black;
+  border-radius: 30px;
+  font-family: "Jost";
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup {
+  display: none;
+}
+
+.popup_is-opened {
+  display: block;
+}
