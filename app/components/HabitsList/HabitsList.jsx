@@ -20,14 +20,15 @@ export const HabitsList = () => {
     });
   };
 
-  const addNewHabit = () => {
+  const addNewHabit = (description) => {
     const newId =
       habits.length > 0
         ? Math.max(...habits.map((current) => current.id)) + 1
         : 1;
+    if (description === "") return;
     setHabits((prev) => [
       ...prev,
-      { id: newId, description: "Task description", completed: false },
+      { id: newId, description: description, completed: false },
     ]);
   };
 
@@ -96,7 +97,7 @@ export const HabitsList = () => {
         <>
           <Overlay isOpened={isPopupOpened} close={closePopup} />
           <AddHabit isOpened={isPopupOpened} close={closePopup}>
-            <HabitForm />
+            <HabitForm add={addNewHabit} close={closePopup} />
           </AddHabit>
         </>
       )}

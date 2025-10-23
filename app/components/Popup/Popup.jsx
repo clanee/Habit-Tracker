@@ -6,6 +6,8 @@ export const AddHabit = (props) => {
       className={`${Styles["popup"]} ${
         props.isOpened && Styles["popup_is-opened"]
       }`}
-    ></div>
+    >
+      <div>{props.children}</div>
+    </div>
   );
 };
